@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Центр форелевой биоэкономики Юга России</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Центр форелевой биоэкономики Юга России: отечественный посадочный материал форели на базе МИП и КГМТУ в Республике Крым. Импортозамещение, аквакультура, наука." />
+  <style>
+    :root {
+      --blue-dark: #004c99;
+      --blue: #0abcd6;
+      --blue-soft: #e6f7ff;
+      --accent: #a4ff4f;
+      --text-main: #1f2933;
+      --text-muted: #6b7280;
+      --bg-light: #f4f7fb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      color: var(--blue-dark);
+    }
+
+    .nav-logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #0abcd6, #004c99);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      padding: 0.2rem 0.4rem;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue-dark);
+      background: var(--blue-soft);
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      font-weight: 500;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(15, 116, 153, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(15, 116, 153, 0.45);
+    }
+
+    .btn-outline {
+      background: #fff;
+      color: var(--blue-dark);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .btn-outline:hover {
+      background: var(--blue-soft);
+    }
+
+    .hero {
+      background: radial-gradient(circle at top left, #0abcd6 0, #004c99 45%, #001427 100%);
+      color: #fff;
+      padding: 3.5rem 1.2rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.08) 0, transparent 50%),
+        radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.1) 0, transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(260px, 2.5fr);
+      gap: 2.5rem;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3.1vw, 2.8rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .hero-highlight {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: #e2e8f0;
+      max-width: 30rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .badge {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 0.25rem 0.7rem;
+      font-size: 0.8rem;
+      color: #e2e8f0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(15, 23, 42, 0.3);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .hero-note {
+      font-size: 0.85rem;
+      color: #cbd5f5;
+    }
+
+    .hero-side {
+      background: rgba(15, 23, 42, 0.75);
+      border-radius: 1.5rem;
+      padding: 1.4rem 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: 0 18px 60px rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-metric-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #cbd5f5;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 0.8rem;
+    }
+
+    .hero-metric-card {
+      padding: 0.6rem 0.8rem;
+      border-radius: 0.9rem;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .hero-metric-value {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .hero-metric-label {
+      font-size: 0.75rem;
+      color: #cbd5f5;
+    }
+
+    .hero-metric-footnote {
+      margin-top: 0.7rem;
+      font-size: 0.75rem;
+      color: #cbd5f5;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 1.5rem;
+      padding: 1.8rem 1.6rem;
+      box-shadow: 0 10px 35px rgba(15, 23, 42, 0.07);
+      border: 1px solid rgba(148, 163, 184, 0.28);
+    }
+
+    .section-header {
+      margin-bottom: 1rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
+      gap: 1.6rem;
+      margin-top: 0.7rem;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .list-check li::before {
+      content: "•";
+      color: var(--blue);
+      font-weight: 900;
+      margin-right: 0.4rem;
+    }
+
+    .list-check li {
+      margin-bottom: 0.35rem;
+      font-size: 0.95rem;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .pill {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: var(--blue-soft);
+      color: var(--blue-dark);
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 0.6rem;
+    }
+
+    .kpi-card {
+      padding: 0.8rem 0.9rem;
+      border-radius: 1rem;
+      background: var(--bg-light);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    .kpi-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .kpi-value {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--blue-dark);
+    }
+
+    .kpi-footnote {
+      margin-top: 0.3rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .consortium-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 0.9rem;
+      margin-top: 0.6rem;
+    }
+
+    .consortium-card {
+      padding: 0.8rem 0.9rem;
+      border-radius: 1rem;
+      background: var(--blue-soft);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.9rem;
+    }
+
+    .timeline {
+      margin-top: 0.7rem;
+      border-left: 2px solid rgba(148, 163, 184, 0.7);
+      padding-left: 1rem;
+    }
+
+    .timeline-item {
+      margin-bottom: 0.7rem;
+    }
+
+    .timeline-year {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--blue-dark);
+    }
+
+    .timeline-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .cta-section-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.3rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cta-main-text {
+      max-width: 420px;
+    }
+
+    .cta-main-text h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+      color: var(--blue-dark);
+    }
+
+    .cta-main-text p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    footer {
+      padding: 1.5rem 1.2rem 2rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(148, 163, 184, 0.3);
+      background: #fff;
+      margin-top: 1rem;
+    }
+
+    footer .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    @media (max-width: 840px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-side {
+        order: -1;
+      }
+
+      .two-col {
+        grid-template-columns: minmax(0,1fr);
+      }
+
+      .kpi-grid,
+      .consortium-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 2.4rem;
+      }
+
+      main {
+        padding-inline: 1rem;
+      }
+
+      .section {
+        padding-inline: 1.2rem;
+      }
+
+      .kpi-grid,
+      .consortium-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="nav-logo">
+        <div class="nav-logo-mark"></div>
+        <div>
+          Центр форелевой<br /> биоэкономики
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#problem">Проблема</a>
+        <a href="#solution">Решение</a>
+        <a href="#tech">Технологии</a>
+        <a href="#economy">Экономика</a>
+        <a href="#consortium">Консорциум</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="#contacts" class="btn btn-outline">Контакты</a>
+        <a href="#partner" class="btn btn-primary">Стать партнёром</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badges">
+          <span class="badge">МИП + КГМТУ</span>
+          <span class="badge">Республика Крым</span>
+          <span class="badge">Нацпроект «Биоэкономика»</span>
+        </div>
+        <h1 class="hero-title">
+          Отечественный <span class="hero-highlight">посадочный материал форели</span>
+          для Юга России
+        </h1>
+        <p class="hero-subtitle">
+          Центр форелевой биоэкономики — это высокотехнологичный комплекс в Крыму,
+          соединяющий аквакультуру, науку и импортозамещение в рамках национального проекта
+          «Технологическое обеспечение биоэкономики».
+        </p>
+        <div class="hero-cta">
+          <a href="#partner" class="btn btn-primary">Обсудить партнёрство</a>
+          <a href="#downloads" class="btn btn-outline">Скачать материалы проекта</a>
+        </div>
+        <div class="hero-note">
+          МИП + КГМТУ • УЗВ, инкубация, морские садки • пилотная площадка биоэкономики
+        </div>
+      </div>
+      <aside class="hero-side">
+        <div class="hero-metric-title">Ключевые ориентиры проекта</div>
+        <div class="hero-metrics-grid">
+          <div class="hero-metric-card">
+            <div class="hero-metric-value">40–60 т</div>
+            <div class="hero-metric-label">посадочного материала в год к 2028</div>
+          </div>
+          <div class="hero-metric-card">
+            <div class="hero-metric-value">−30%</div>
+            <div class="hero-metric-label">импортозависимости региона по форели</div>
+          </div>
+          <div class="hero-metric-card">
+            <div class="hero-metric-value">3–4 года</div>
+            <div class="hero-metric-label">ориентировочная окупаемость проекта</div>
+          </div>
+          <div class="hero-metric-card">
+            <div class="hero-metric-value">20+</div>
+            <div class="hero-metric-label">высокотехнологичных рабочих мест</div>
+          </div>
+        </div>
+        <div class="hero-metric-footnote">
+          Научная база КГМТУ + производственная площадка МИП в Крыму позволяют создать первый в регионе
+          центр селекции и инкубации форели полного цикла.
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <section id="problem" class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Проблематика</div>
+        <h2 class="section-title">Рынок форели в России зависит от импорта</h2>
+        <p class="section-subtitle">
+          Посадочный материал форели и лососевых по-прежнему в значительной степени завозится из-за рубежа.
+          Это риск для продовольственной безопасности и устойчивости аквакультуры Юга России.
+        </p>
+      </div>
+      <div class="two-col">
+        <div>
+          <ul class="list-check">
+            <li>Высокая доля импортного посадочного материала форели.</li>
+            <li>Рыбоводческие хозяйства зависят от логистики и внешних рисков.</li>
+            <li>Недостаток отечественных генетических линий и селекционных центров.</li>
+            <li>Отсутствие в Крыму центра, соединяющего науку и производство.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="section-subtitle">
+            Цель проекта — создать в Крыму устойчивый источник отечественного посадочного материала форели,
+            опираясь на научный потенциал КГМТУ и инфраструктуру морской базы.
+          </div>
+          <div class="pill-list">
+            <span class="pill">Импортозамещение</span>
+            <span class="pill">Продовольственная безопасность</span>
+            <span class="pill">Биоэкономика</span>
+            <span class="pill">Научная селекция</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="solution" class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Решение</div>
+        <h2 class="section-title">Центр форелевой биоэкономики в Республике Крым</h2>
+        <p class="section-subtitle">
+          Мы создаём комплексный центр селекции, инкубации и выращивания форели полного цикла
+          на базе малого инновационного предприятия и КГМТУ.
+        </p>
+      </div>
+      <div class="two-col">
+        <div>
+          <ul class="list-check">
+            <li>Маточное стадо отечественных и адаптированных линий форели.</li>
+            <li>Инкубация: икра, личинка, мальок, сеголеток.</li>
+            <li>УЗВ-модуль для круглогодичного производства.</li>
+            <li>Морские садки для доращивания и отработки технологий.</li>
+          </ul>
+        </div>
+        <div>
+          <ul class="list-check">
+            <li>Учебно-научно-производственный полигон для студентов КГМТУ.</li>
+            <li>Совместные НИОКР, селекция, биобезопасность, корма.</li>
+            <li>Интеграция в национальный проект «Технологическое обеспечение биоэкономики».</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="tech" class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Технологии</div>
+        <h2 class="section-title">Технологическая платформа проекта</h2>
+        <p class="section-subtitle">
+          Комбинация современных решений в области УЗВ, морской аквакультуры, селекции и цифрового мониторинга.
+        </p>
+      </div>
+      <div class="two-col">
+        <div>
+          <ul class="list-check">
+            <li>УЗВ (замкнутые системы водоснабжения) для стабильных параметров среды.</li>
+            <li>Морские садки на базе морской инфраструктуры КГМТУ.</li>
+            <li>Лаборатория биобезопасности и контроля качества воды.</li>
+            <li>Испытание новых кормов и биопрепаратов.</li>
+          </ul>
+        </div>
+        <div>
+          <ul class="list-check">
+            <li>Цифровой мониторинг параметров УЗВ и садков (датчики, ИТ-система).</li>
+            <li>Селекция отечественных линий форели совместно с КГМТУ.</li>
+            <li>Единая база данных по росту, выживаемости и эффективности.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="economy" class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Экономика и эффекты</div>
+        <h2 class="section-title">KPI и ключевые показатели проекта</h2>
+        <p class="section-subtitle">
+          Проект сочетает экономическую устойчивость, социальный эффект и вклад в технологический суверенитет России.
+        </p>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Производство</div>
+          <div class="kpi-value">40–60 т/год</div>
+          <div class="kpi-footnote">посадочного материала форели к 2028 году</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Импортозамещение</div>
+          <div class="kpi-value">−20–30%</div>
+          <div class="kpi-footnote">снижение импортозависимости региона по форели</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Инвестиции</div>
+          <div class="kpi-value">50–80 млн ₽</div>
+          <div class="kpi-footnote">CAPEX на запуск центра полного цикла</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Окупаемость</div>
+          <div class="kpi-value">3–4 года</div>
+          <div class="kpi-footnote">при достижении проектных мощностей</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Рабочие места</div>
+          <div class="kpi-value">20+</div>
+          <div class="kpi-footnote">высокотехнологичных рабочих мест в Крыму</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Кадры и наука</div>
+          <div class="kpi-value">50+ / год</div>
+          <div class="kpi-footnote">студентов и магистров КГМТУ на базе центра</div>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">2025–2026</div>
+          <div class="timeline-text">Формирование консорциума, запуск пилотных мощностей УЗВ и инкубации.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2027–2028</div>
+          <div class="timeline-text">Выход на 40–60 т посадочного материала, подключение морских садков.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2029–2030</div>
+          <div class="timeline-text">Масштабирование проекта, работа с регионами ЮФО и СКФО, подготовка к экспорту.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="consortium" class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Консорциум</div>
+        <h2 class="section-title">Партнёры проекта и модель взаимодействия</h2>
+        <p class="section-subtitle">
+          Проект реализуется в формате консорциума «университет — бизнес — регион — отрасль».
+        </p>
+      </div>
+      <div class="consortium-grid">
+        <div class="consortium-card">
+          <strong>МИП</strong><br/>
+          Операционное управление центром, производство посадочного материала, развитие УЗВ и садков.
+        </div>
+        <div class="consortium-card">
+          <strong>КГМТУ</strong><br/>
+          Научная и образовательная база, НИОКР, селекция, лаборатории, подготовка кадров.
+        </div>
+        <div class="consortium-card">
+          <strong>Республика Крым</strong><br/>
+          Региональная поддержка, инфраструктура, интеграция в региональные программы развития АПК и биоэкономики.
+        </div>
+        <div class="consortium-card">
+          <strong>Росрыболовство и институты развития</strong><br/>
+          Отраслевая экспертиза, меры господдержки, включение в пилотные проекты.
+        </div>
+        <div class="consortium-card">
+          <strong>Банки и инвесторы</strong><br/>
+          Льготное финансирование, инвестиции в расширение мощностей, совместные программы.
+        </div>
+        <div class="consortium-card">
+          <strong>Рыбоводческие хозяйства</strong><br/>
+          Якорные потребители посадочного материала, партнёры по отработке технологий и стандартов.
+        </div>
+      </div>
+    </section>
+
+    <section id="downloads" class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Материалы</div>
+        <h2 class="section-title">Презентации и документы проекта</h2>
+        <p class="section-subtitle">
+          По запросу доступны: презентация проекта, мастер-документ, финансовая модель, проектная книга и пакет для нацпроекта.
+        </p>
+      </div>
+      <p style="font-size:0.9rem;color:var(--text-muted);">
+        Для получения материалов и подробного пакета документов (презентация, финмодель, ТЭО, письма и т.д.)
+        свяжитесь с нами по контактам ниже — мы отправим полный комплект лично.
+      </p>
+    </section>
+
+    <section id="partner" class="section">
+      <div class="cta-section-inner">
+        <div class="cta-main-text">
+          <h3>Готовы обсудить партнёрство</h3>
+          <p>
+            Если вы представляете рыбоводческое хозяйство, банк, институт развития или орган власти —
+            мы открыты к диалогу. Давайте вместе выведем российскую форель на новый уровень.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <a href="#contacts" class="btn btn-primary">Получить пакет материалов</a>
+          <span style="font-size:0.85rem;color:var(--text-muted);">
+            Формат: онлайн-встреча, презентация, обмен документами.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts" class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Контакты</div>
+        <h2 class="section-title">Связаться с командой проекта</h2>
+        <p class="section-subtitle">
+          Напишите нам, чтобы получить материалы проекта, согласовать встречу или обсудить форматы участия.
+        </p>
+      </div>
+      <p style="font-size:0.95rem;">
+        <strong>Проект:</strong> Центр форелевой биоэкономики Юга России<br/>
+        <strong>База:</strong> МИП при ФГБОУ ВО «КГМТУ», Республика Крым<br/>
+        <strong>E-mail:</strong> <em>ваш.email@пример.ru</em><br/>
+        <strong>Телефон/мессенджер:</strong> <em>+7 (___) ___-__-__</em><br/>
+      </p>
+      <p style="margin-top:0.6rem;font-size:0.85rem;color:var(--text-muted);">
+        * Укажите реальные контакты, по которым с вами удобно связаться (почта, телефон, Telegram).
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© Центр форелевой биоэкономики Юга России, <span id="year"></span></div>
+      <div>МИП + КГМТУ • Республика Крым • Проект в контуре нацпроекта «Технологическое обеспечение биоэкономики»</div>
+    </div>
+  </footer>
+
+  <script>
+    // текущий год в подвале
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
